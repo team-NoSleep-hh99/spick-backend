@@ -4,6 +4,7 @@ import com.team.spick.domain.User;
 import com.team.spick.dto.SignupRequestDto;
 import com.team.spick.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.regex.Pattern;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public User registerUser(SignupRequestDto requestDto) {
         String username = requestDto.getUsername();
@@ -44,7 +46,11 @@ public class UserService {
             throw new IllegalArgumentException("비밀번호와 정확히 일치하게 작성해주세요");
         }
 
-        User user = new User(requestDto);
+        //패스워드 암호화
+        password = passwordEncoder.encode(requestDto.getPassword());
+
+        User user = new User(username, nickname, password);
+        System.out.println(requestDto);
 
         return userRepository.save(user);
 

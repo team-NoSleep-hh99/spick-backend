@@ -18,7 +18,15 @@ public class UserController {
     public User createUser(@RequestBody SignupRequestDto requestDto) {
 
         return userService.registerUser(requestDto);
+
+//        try {
+//            userService.registerUser(requestDto);
+//            return true;
+//        }catch (Exception e){
+//            return false;
+//        }
     }
+
 
 
 }
