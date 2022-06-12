@@ -3,12 +3,8 @@ import com.example.demo.dto.BoardRequestDto;
 import com.example.demo.dto.BoardResponseDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @NoArgsConstructor // 기본 생성자 만듬.
 @Getter // 조회를 하기 위해 있어야 됨.

@@ -23,15 +23,15 @@ public class Likes {
 
     //게시글 -> 좋아요 해당 게시글에만 저장해야하기 때문에
     @Column(nullable = false)
-    private Long postId;
+    private Long boardId;
 
     //좋아요
     @Column(nullable = false)
     private Boolean is_Check;
 
     //@Column(
-    public Likes(Long postId, LikeDto likeDto){
-        this.postId = postId;
+    public Likes(Long boardId, LikeDto likeDto){
+        this.boardId = boardId;
         this.userId = likeDto.getUserId();
         this.is_Check = likeDto.getIs_Check();
     }

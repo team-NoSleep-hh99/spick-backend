@@ -43,19 +43,19 @@ public class BoardController {
 
 
 
-//    // 게시글 상세 조회
-//    @GetMapping("/user/post/{postId}")
-//    public Post detailPost(@PathVariable Long postId) {
-//        Post post = new Post();
-//        post = postRepository.findById(postId).orElseThrow(
-//                () -> new IllegalArgumentException("게시글이 없습니다.")
-//        );
-//        return post;
-//    }
+    // 게시글 상세 조회
+    @GetMapping("/user/Board/{boardId}")
+    public Board detailBoard(@PathVariable Long boardId) {
+        Board board = new Board();
+        board = boardRepository.findById(boardId).orElseThrow(
+                () -> new IllegalArgumentException("게시글이 없습니다.")
+        );
+        return board;
+    }
 
-    /////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
 
-    // 내가 작성한 게시글 조회
+    //내가 작성한 게시글 조회
     @PostMapping("/api/Board/mypage")
     public List<DetailBoardResponseDto> myWriteBoard(@RequestBody BoardRequestDto boardRequestDto) {
 
@@ -78,16 +78,16 @@ public class BoardController {
     }
 
 
-    // 게시글 상세 조회
-    @PostMapping("/user/board/detail")
-    public DetailBoardResponseDto detailPost(@RequestBody BoardResponseDto boardResponseDto) {
-
-        System.out.println("게시글 상세조회 postId " + boardResponseDto.getBoardID());
-        System.out.println("게시글 상세조회 userId " + boardResponseDto.getUserId());
-        DetailBoardResponseDto detailBoardResponseDto = boardService.detailPost(BoardResponseDto);
-
-        return detailBoardResponseDto;
-    }
+//    // 게시글 상세 조회
+//    @PostMapping("/user/board/detail")
+//    public DetailBoardResponseDto detailPost(@RequestBody BoardResponseDto boardResponseDto) {
+//
+//        System.out.println("게시글 상세조회 boardId " + boardResponseDto.getBoardId());
+//        System.out.println("게시글 상세조회 userId " + boardResponseDto.getUserId());
+//        DetailBoardResponseDto detailBoardResponseDto = boardService.detailBoard(boardResponseDto);
+//
+//        return detailBoardResponseDto;
+//    }
 
     ///////////////////////////////////////////////////////////////////////////////
 
@@ -107,9 +107,9 @@ public class BoardController {
 
     // 게시글 작성 시 이미지 업로드
     @PutMapping("/api/board/write/image")
-    public Long imagePost(@RequestBody BoardRequestDto BoardResponseDto) {
+    public Long imagePost(@RequestBody BoardResponseDto BoardResponseDto) {
         System.out.println("게시글 이미지 업로드 이미지url : " + BoardResponseDto.getBoard_imgURL());
-        System.out.println("게시글 이미지 업로드 boardId : " + BoardResponseDto.getboardID());
+        System.out.println("게시글 이미지 업로드 boardId : " + BoardResponseDto.getBoardId());
 
         return boardService.Imageupdate(BoardResponseDto);
 
@@ -118,7 +118,7 @@ public class BoardController {
     // 게시글 수정
     @PutMapping("/api/Board/write/{boardId}")
     public Long updatePost(@PathVariable Long boardId, @RequestBody BoardRequestDto boardRequestDto) {
-        return boardRequestDto.update(boardId, boardRequestDto);
+        return boardService.update(boardId, boardRequestDto);
     }
 
     //게시글 삭제
@@ -127,14 +127,13 @@ public class BoardController {
 
         boardRepository.deleteById(boardId);
         System.out.println("포스트 삭제 boardId = " + boardId );
-
 //        List<Comments> commentsList = commentRepository.findAllByBoardId((boardId);
 //        commentRepository.deleteAll(commentsList);
-//        System.out.println("댓글들 삭제완료 postId = " + postId );
+        System.out.println("댓글들 삭제완료 postId = " + boardId );
 
-        List<Likes> likesList = likeRepository.findAllByBoardId((boardId);
+        List<Likes> likesList = likeRepository.findAllByBoardId((boardId));
         likeRepository.deleteAll(likesList);
-        System.out.println("공감 객체들 삭제완료 postId = " + boardId );
+        System.out.println("공감 객체들 삭제완료 boardId = " + boardId );
 
         return boardId;
     }

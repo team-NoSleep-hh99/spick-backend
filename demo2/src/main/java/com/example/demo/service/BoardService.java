@@ -41,7 +41,7 @@ public class BoardService {
     @Transactional
     public Long Imageupdate(BoardResponseDto boardRequestDto) {
         Long boardId = boardRequestDto.getBoardId();
-        Board board = BoardRepository.findByBoardId(boardId).orElseThrow(
+        Board board = boardRepository.findByBoardId(boardId).orElseThrow(
                 () -> new IllegalArgumentException("포스트가 존재하지 않습니다.")
         );
         board.imageUpdate(boardRequestDto);
@@ -50,15 +50,15 @@ public class BoardService {
 
 
     //게시글 상세
-    public DetailBoardResponseDto detailPost(BoardResponseDto boardResponseDto) {
+    public DetailBoardResponseDto detailBoard(BoardResponseDto boardResponseDto) {
 
         Long boardId = boardResponseDto.getBoardId();
 
         Board board = boardRepository.findByBoardId(boardId).orElseThrow(
                 () -> new IllegalArgumentException("포스트가 존재하지 않습니다.")
         );
-        Long postUserId = board.getUserId();
-//        String nickname = userRepository.findById(postUserId).get().getNickname();
+        Long boardUserId = board.getUserId();
+//        String nickname = userRepository.findById(boardUserId).get().getNickname();
 
 
         Long userId = boardResponseDto.getUserId();
@@ -69,7 +69,7 @@ public class BoardService {
             System.out.println("게시글 상세 userId가 0일 때 : " +userId);
             boolean is_check = false;
 
-            Long likeCount = Board.getLikeCount();
+            Long likeCount = board.getLikeCount();
 
             LikeDto likes = new LikeDto(is_check,likeCount);
 
@@ -99,11 +99,11 @@ public class BoardService {
                 boolean is_check = false;
                 System.out.println("게시글 상세조회 userId 0이 아닐 때 is_check : " + is_check );
 
-                Long likeCount = Board.getLikeCount();
+                Long likeCount = board.getLikeCount();
                 System.out.println("게시글 상세조회 userId 0이 아닐 때 likeCount : " + likeCount );
                 LikeDto likes = new LikeDto(is_check,likeCount);
                 System.out.println("LikeDto 생성완료");
-                DetailBoardResponseDto detailBoardResponseDto = new DetailBoardResponseDto(board,likes, nickname);
+                DetailBoardResponseDto detailBoardResponseDto = new DetailBoardResponseDto(board,likes);
                 System.out.println("DetailBoardResponseDto 생성완료");
                 return detailBoardResponseDto;
             }
@@ -127,9 +127,9 @@ public class BoardService {
             Long likeCount = board.getLikeCount();
             System.out.println("내가 작성한 게시글 조회 서비스에 like count : "+likeCount);
 
-            DetailBoardResponseDto detailPostResponseDto = new DetailBoardResponseDto(Board,likeCount);
+            DetailBoardResponseDto detailBoardResponseDto = new DetailBoardResponseDto(board,likeCount);
 
-            detailBoardResponseDtoList.add(detailBoardResponseDtoList);
+            detailBoardResponseDtoList.add(detailBoardResponseDto);
 
         }
         return detailBoardResponseDtoList;
@@ -144,13 +144,12 @@ public class BoardService {
         List<DetailBoardResponseDto> detailBoardResponseDtoList = new ArrayList<>();
 
         for (Likes like : likesList) {
-            Long Board_id = like.getBoard_Id();
+            Long boardId = like.getBoardId();
 
             Board board = boardRepository.findByBoardId(boardId).orElseThrow(
                     () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
             );
-
-            Long likeCount = Board.getLikeCount();
+            Long likeCount = board.getLikeCount();
             System.out.println("내가 작성한 게시글 조회 서비스에 like count : " + likeCount);
 
             DetailBoardResponseDto detailBoardResponseDto = new DetailBoardResponseDto(board,likeCount);
@@ -163,7 +162,7 @@ public class BoardService {
     }
 
     // 공감 수 카운트 업데이트
-    public Long likeCount(Long BoardId, Long userId) {
+    public Long likeCount(Long boardId, Long userId) {
 
         Board board = boardRepository.findByBoardId(boardId).orElseThrow(
                 () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
@@ -181,7 +180,7 @@ public class BoardService {
 
         System.out.println("포스트에 likeCount 업데이트 수 (진행 전) : " + likeCount);
         board.likeCount(likeCount);
-        BoardRepository.save(board);
+        boardRepository.save(board);
         System.out.println("포스트에 likeCount 업데이트 수 : " + likeCount);
 
         return likeCount;
