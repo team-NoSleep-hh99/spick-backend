@@ -99,6 +99,9 @@ public class BoardController {
         System.out.println("게시글 생성 제목 : " + boardRequestDto.getBoard_title());
         System.out.println("게시글 생성 이미지url : " + boardRequestDto.getBoard_imgURL());
         System.out.println("게시글 생성 유저Id : " + boardRequestDto.getUserId());
+//       임시추가
+        System.out.println("닉네임 : " + boardRequestDto.getNickname());
+        System.out.println("프로필사진 : " + boardRequestDto.getUser_picURL());
         Board board = new Board(boardRequestDto);
         boardRepository.save(board);
         return board;
