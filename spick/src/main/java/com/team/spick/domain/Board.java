@@ -1,6 +1,6 @@
 package com.team.spick.domain;
 import com.team.spick.dto.BoardRequestDto;
-import com.team.spick.dto.BoardResponseDto;
+import com.team.spick.security.UserDetailsImpl;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,59 +10,34 @@ import javax.persistence.*;
 @Getter // 조회를 하기 위해 있어야 됨.
 @Entity // 테이블과 연계됨을 스프링에게 알려줌=
 public class Board extends Timestamped { // 생성 , 수정 시간을 자동으로 만듬.
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Id
-    private Long boardId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long board_id;
 
     @Column(nullable = false)
-    private Long userId;
+    private String board_title;
 
     @Column(nullable = false)
-    private  String board_title;
+    private String board_text;
 
     @Column(nullable = false)
-    private  String board_text;
+    private String board_imgURL;
 
-    @Column
-    private  String board_imgURL;
+    @Column(nullable = false)
+    private String nickname;
 
-    @Column
-    private Long likeCount;
-//    임시
-    @Column
-    private String  nickname;
-    @Column
-    private String user_picURL;
 
-//    @OneToMany
-//    @JoinColumn(name = "COMMENTS_ID")
-//    private List<Comments> commentList;
-
-    public Board(BoardRequestDto boardRequestDto)  {
-        this.userId = boardRequestDto.getUserId();
+    public Board(BoardRequestDto boardRequestDto, UserDetailsImpl userDetails) {
         this.board_title = boardRequestDto.getBoard_title();
         this.board_text = boardRequestDto.getBoard_text();
         this.board_imgURL = boardRequestDto.getBoard_imgURL();
-        this.likeCount = 0L;
-//       임시추가
-        this.nickname = boardRequestDto.getNickname();
-        this.user_picURL = boardRequestDto.getUser_picURL();
-
+        this.nickname = userDetails.getUser().getNickname();
     }
-    public void update(BoardRequestDto boardRequestDto) {
+
+    public void fixPage(BoardRequestDto boardRequestDto) {
         this.board_title = boardRequestDto.getBoard_title();
         this.board_text = boardRequestDto.getBoard_text();
         this.board_imgURL = boardRequestDto.getBoard_imgURL();
     }
-
-    //이미지 업데이트 할때 필요
-    public void imageUpdate(BoardResponseDto boardResponseDto) {
-        this.board_imgURL = boardResponseDto.getBoard_imgURL();
-    }
-    //좋아요카운트할때 필요
-    public void likeCount(Long Count) {
-        this.likeCount = Count;
-    }
-
-
 }
