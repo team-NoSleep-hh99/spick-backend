@@ -133,6 +133,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         skipPathList.add("POST,/h2-console/**");
         // 회원 관리 API 허용
         skipPathList.add("POST,/api/signup");
+        skipPathList.add("POST,/api/checkId");
+        skipPathList.add("POST,/api/checkNick");
         skipPathList.add("POST,/api/login");
 //        skipPathList.add("POST,/api/login");
         //회원 탈퇴 API 토큰 없어도 가능하게 허용
@@ -174,6 +176,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.addExposedHeader("Authorization");
+        configuration.addExposedHeader("Username");
+        configuration.addExposedHeader("Nickname");
+//        configuration.addExposedHeader("Userinfo");
         //configuration.addAllowedOriginPattern("*");
 //        configuration.addAllowedOrigin("*");
 

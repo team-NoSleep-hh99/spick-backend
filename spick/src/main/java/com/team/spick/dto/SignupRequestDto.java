@@ -15,4 +15,6 @@ public class SignupRequestDto {
         this.password = password;
         this.passwordCheck = passwordCheck;
     }
+
+
 }
