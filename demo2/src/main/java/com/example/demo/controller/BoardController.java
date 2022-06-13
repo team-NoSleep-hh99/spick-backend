@@ -78,16 +78,16 @@ public class BoardController {
     }
 
 
-//    // 게시글 상세 조회
-//    @PostMapping("/user/board/detail")
-//    public DetailBoardResponseDto detailPost(@RequestBody BoardResponseDto boardResponseDto) {
-//
-//        System.out.println("게시글 상세조회 boardId " + boardResponseDto.getBoardId());
-//        System.out.println("게시글 상세조회 userId " + boardResponseDto.getUserId());
-//        DetailBoardResponseDto detailBoardResponseDto = boardService.detailBoard(boardResponseDto);
-//
-//        return detailBoardResponseDto;
-//    }
+    // 게시글 상세 조회
+    @PostMapping("/user/board/detail")
+    public DetailBoardResponseDto detailPost(@RequestBody BoardResponseDto boardResponseDto) {
+
+        System.out.println("게시글 상세조회 boardId " + boardResponseDto.getBoardId());
+        System.out.println("게시글 상세조회 userId " + boardResponseDto.getUserId());
+        DetailBoardResponseDto detailBoardResponseDto = boardService.detailBoard(boardResponseDto);
+
+        return detailBoardResponseDto;
+    }
 
     ///////////////////////////////////////////////////////////////////////////////
 
@@ -99,7 +99,6 @@ public class BoardController {
         System.out.println("게시글 생성 제목 : " + boardRequestDto.getBoard_title());
         System.out.println("게시글 생성 이미지url : " + boardRequestDto.getBoard_imgURL());
         System.out.println("게시글 생성 유저Id : " + boardRequestDto.getUserId());
-
         Board board = new Board(boardRequestDto);
         boardRepository.save(board);
         return board;

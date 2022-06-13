@@ -28,6 +28,11 @@ public class Board extends Timestamped { // 생성 , 수정 시간을 자동으�
 
     @Column
     private Long likeCount;
+//    임시
+    @Column
+    private String  nickname;
+    @Column
+    private String user_picURL;
 
 //    @OneToMany
 //    @JoinColumn(name = "COMMENTS_ID")
@@ -39,6 +44,9 @@ public class Board extends Timestamped { // 생성 , 수정 시간을 자동으�
         this.board_text = boardRequestDto.getBoard_text();
         this.board_imgURL = boardRequestDto.getBoard_imgURL();
         this.likeCount = 0L;
+//       임시추가
+        this.nickname = boardRequestDto.getNickname();
+        this.user_picURL = boardRequestDto.getUser_picURL();
 
     }
     public void update(BoardRequestDto boardRequestDto) {

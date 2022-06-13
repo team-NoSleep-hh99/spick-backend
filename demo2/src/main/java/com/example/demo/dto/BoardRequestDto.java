@@ -11,4 +11,6 @@ public class BoardRequestDto {
     private  String board_title;
     private  String board_text;
     private  String board_imgURL;
+    private  String nickname;
+    private  String user_picURL;
 }
