@@ -1,14 +1,14 @@
-package com.example.demo.service;
+package com.team.spick.service;
 
 
-import com.example.demo.domain.Board;
-import com.example.demo.domain.Likes;
-import com.example.demo.dto.BoardRequestDto;
-import com.example.demo.dto.BoardResponseDto;
-import com.example.demo.dto.DetailBoardResponseDto;
-import com.example.demo.dto.LikeDto;
-import com.example.demo.repository.BoardRepository;
-import com.example.demo.repository.LikeRepository;
+import com.team.spick.domain.Board;
+import com.team.spick.domain.Likes;
+import com.team.spick.dto.BoardRequestDto;
+import com.team.spick.dto.BoardResponseDto;
+import com.team.spick.dto.DetailBoardResponseDto;
+import com.team.spick.dto.LikeDto;
+import com.team.spick.repository.BoardRepository;
+import com.team.spick.repository.LikeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

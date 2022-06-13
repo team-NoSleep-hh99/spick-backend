@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.team.spick.dto;
 
 import lombok.*;
 

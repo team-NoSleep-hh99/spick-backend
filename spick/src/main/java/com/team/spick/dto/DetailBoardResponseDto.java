@@ -1,6 +1,6 @@
-package com.example.demo.dto;
+package com.team.spick.dto;
 
-import com.example.demo.domain.Board;
+import com.team.spick.domain.Board;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

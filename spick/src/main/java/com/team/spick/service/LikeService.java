@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.team.spick.service;
 
-import com.example.demo.domain.Likes;
-import com.example.demo.dto.LikeDto;
-import com.example.demo.repository.LikeRepository;
+import com.team.spick.domain.Likes;
+import com.team.spick.dto.LikeDto;
+import com.team.spick.repository.LikeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

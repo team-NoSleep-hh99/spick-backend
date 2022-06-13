@@ -1,6 +1,6 @@
-package com.example.demo.domain;
-import com.example.demo.dto.BoardRequestDto;
-import com.example.demo.dto.BoardResponseDto;
+package com.team.spick.domain;
+import com.team.spick.dto.BoardRequestDto;
+import com.team.spick.dto.BoardResponseDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

@@ -1,7 +1,7 @@
-package com.example.demo.repository;
+package com.team.spick.repository;
 
 
-import com.example.demo.domain.Likes;
+import com.team.spick.domain.Likes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

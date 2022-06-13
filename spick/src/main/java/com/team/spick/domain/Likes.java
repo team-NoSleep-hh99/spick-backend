@@ -1,7 +1,7 @@
-package com.example.demo.domain;
+package com.team.spick.domain;
 
 
-import com.example.demo.dto.LikeDto;
+import com.team.spick.dto.LikeDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

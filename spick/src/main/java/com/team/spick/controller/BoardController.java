@@ -1,13 +1,14 @@
-package com.example.demo.controller;
+package com.team.spick.controller;
 
-import com.example.demo.domain.Board;
-import com.example.demo.domain.Likes;
-import com.example.demo.dto.DetailBoardResponseDto;
-import com.example.demo.dto.BoardRequestDto;
-import com.example.demo.dto.BoardResponseDto;
-import com.example.demo.repository.BoardRepository;
-import com.example.demo.repository.LikeRepository;
-import com.example.demo.service.BoardService;
+
+import com.team.spick.domain.Board;
+import com.team.spick.domain.Likes;
+import com.team.spick.dto.BoardRequestDto;
+import com.team.spick.dto.BoardResponseDto;
+import com.team.spick.dto.DetailBoardResponseDto;
+import com.team.spick.repository.BoardRepository;
+import com.team.spick.repository.LikeRepository;
+import com.team.spick.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,6 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-
 public class BoardController {
     private final BoardRepository boardRepository;
     private final BoardService boardService;

@@ -1,8 +1,9 @@
-package com.example.demo.controller;
+package com.team.spick.controller;
 
-import com.example.demo.dto.LikeDto;
-import com.example.demo.repository.LikeRepository;
-import com.example.demo.service.LikeService;
+
+import com.team.spick.dto.LikeDto;
+import com.team.spick.repository.LikeRepository;
+import com.team.spick.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
