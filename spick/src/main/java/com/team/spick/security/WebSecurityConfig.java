@@ -181,6 +181,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         configuration.addExposedHeader("Authorization");
         configuration.addExposedHeader("Username");
         configuration.addExposedHeader("Nickname");
+        configuration.addExposedHeader("User_PICURL");
 //        configuration.addExposedHeader("Userinfo");
         //configuration.addAllowedOriginPattern("*");
 //        configuration.addAllowedOrigin("*");

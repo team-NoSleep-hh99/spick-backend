@@ -31,6 +31,7 @@ public class FormLoginSuccessHandler extends SavedRequestAwareAuthenticationSucc
         response.addHeader(AUTH_HEADER, TOKEN_TYPE + " " + token);
         response.addHeader("Username", userDetails.getUser().getUsername());
         response.addHeader("Nickname", userDetails.getUser().getNickname());
+        response.addHeader("User_PICURL", userDetails.getUser().getUser_picURL());
 
 
         //UserId 내려주기

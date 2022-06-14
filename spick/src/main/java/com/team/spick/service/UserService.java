@@ -24,6 +24,7 @@ public class UserService {
         String nickname = requestDto.getNickname();
         String password = requestDto.getPassword();
         String passwordCheck = requestDto.getPasswordCheck();
+        String user_picURL = requestDto.getUser_picURL();
 //        String user_picURL = requestDto.getUser_picURL();
 
         //회원 ID 중복 확인
@@ -52,7 +53,7 @@ public class UserService {
         //패스워드 암호화
         password = passwordEncoder.encode(requestDto.getPassword());
 
-        User user = new User(username, nickname, password);
+        User user = new User(username, nickname, password, user_picURL);
         System.out.println(requestDto);
 
         return userRepository.save(user);
