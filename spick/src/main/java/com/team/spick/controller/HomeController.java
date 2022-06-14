@@ -17,7 +17,6 @@ public class HomeController {
 
     private final BoardService boardService;
 
-
     //게시글 생성
     @PostMapping("/api/input")
     public Board createBoard(@RequestBody BoardRequestDto boardRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails){
