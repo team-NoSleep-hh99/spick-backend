@@ -24,6 +24,7 @@ public class UserService {
         String nickname = requestDto.getNickname();
         String password = requestDto.getPassword();
         String passwordCheck = requestDto.getPasswordCheck();
+//        String user_picURL = requestDto.getUser_picURL();
 
         //회원 ID 중복 확인
         Optional<User> found = userRepository.findByUsername(username);

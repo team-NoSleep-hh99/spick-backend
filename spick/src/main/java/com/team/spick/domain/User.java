@@ -28,16 +28,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+//    @Column(nullable = false)
+//    private String user_picURL;
 
     public User(String username, String nickname, String password) {
         this.username = username;
         this.nickname = nickname;
         this.password = password;
+//        this.user_picURL = user_picURL;
     }
 
     public User(SignupRequestDto requestDto) {
         this.username = requestDto.getUsername();
         this.nickname = requestDto.getNickname();
         this.password = requestDto.getPassword();
+//        this.user_picURL = requestDto.getUser_picURL();
     }
 }

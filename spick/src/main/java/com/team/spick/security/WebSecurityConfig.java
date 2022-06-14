@@ -101,6 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .logoutUrl("/api/logout")
 //                .logoutSuccessUrl("/")
 //                .permitAll();
+
     }
 
     @Bean
@@ -137,6 +138,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         skipPathList.add("POST,/api/checkNick");
         skipPathList.add("POST,/api/login");
         skipPathList.add("GET,/api");
+        skipPathList.add("GET,/api/detail/*");
 //        skipPathList.add("POST,/api/login");
         //회원 탈퇴 API 토큰 없어도 가능하게 허용
 //        skipPathList.add("POST,/user/remove");

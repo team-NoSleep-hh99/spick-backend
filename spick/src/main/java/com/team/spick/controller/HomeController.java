@@ -26,7 +26,7 @@ public class HomeController {
 
     //게시글 전체 조회
     @GetMapping("/api")
-    public List<Board> homePage(){
+    public List<Board> homePage() {
         return boardService.homePage();
     }
 }

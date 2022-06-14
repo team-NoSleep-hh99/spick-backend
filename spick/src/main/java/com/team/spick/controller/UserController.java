@@ -3,6 +3,7 @@ package com.team.spick.controller;
 import com.team.spick.domain.User;
 import com.team.spick.dto.SignupRequestDto;
 import com.team.spick.service.UserService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,9 @@ public class UserController {
     public boolean duplicateNickname(@RequestBody SignupRequestDto signupRequestDto) {
         return userService.checkNick(signupRequestDto);
     }
+
+
+
 
 
 }
