@@ -1,6 +1,6 @@
 package com.team.spick.domain;
 
-import com.team.spick.dto.ReplytDto;
+import com.team.spick.dto.ReplytRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -35,14 +35,12 @@ public class Reply extends Timestamped {
         this.board= board;
     }
 
-    public Reply(ReplytDto replytDto) {
-        this.reply_nickname = replytDto.getReply_nickname();
-        this.reply_text = replytDto.getReply_text();
-        this.reply_picURL = replytDto.getReply_picURL();
+    public Reply(ReplytRequestDto replytRequestDto) {
+        this.reply_text = replytRequestDto.getReply_text();
     }
 
-    public void update(ReplytDto replytDto) {
+    public void update(ReplytRequestDto replytRequestDto) {
 
-        this.reply_text = replytDto.getReply_text();
+        this.reply_text = replytRequestDto.getReply_text();
     }
 }

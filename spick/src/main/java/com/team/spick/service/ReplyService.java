@@ -2,7 +2,7 @@ package com.team.spick.service;
 
 import com.team.spick.domain.Board;
 import com.team.spick.domain.Reply;
-import com.team.spick.dto.ReplytDto;
+import com.team.spick.dto.ReplytRequestDto;
 import com.team.spick.repository.BoardRepository;
 import com.team.spick.repository.ReplyRepository;
 import com.team.spick.security.UserDetailsImpl;
@@ -26,9 +26,9 @@ public class ReplyService {
 
     //수정
     @Transactional
-    public Reply updateReply(Long replyId, ReplytDto replytDto) {
+    public Reply updateReply(Long replyId, ReplytRequestDto replytRequestDto) {
         Reply reply = replyRepository.findById(replyId).orElse(null);
-        reply.update(replytDto);
+        reply.update(replytRequestDto);
 
         return reply;
     }
@@ -38,20 +38,13 @@ public class ReplyService {
         replyRepository.deleteById(replyId);
     }
 
-    //등록
-    public Reply createReply(ReplytDto replytDto, UserDetailsImpl userDetails) {
-        Board board = boardRepository.findById(replytDto.getBoard_id()).orElseThrow(
+    //댓글 등록
+    public Reply createReply(Long board_id, ReplytRequestDto replytRequestDto, UserDetailsImpl userDetails) {
+        Board board = boardRepository.findById(board_id).orElseThrow(
                 () -> new IllegalArgumentException("에러")
         );
-
-        String nickname = "test 확인";
-        if (userDetails != null) {
-            nickname = userDetails.getUser().getNickname();
-        }
-        Reply reply = new Reply(nickname, replytDto.getReply_text(), userDetails.getUser().getUser_picURL(), board);
-        Reply saveReply = replyRepository.save(reply);
-
-        return saveReply;
+        Reply reply = new Reply(userDetails.getUser().getNickname(), replytRequestDto.getReply_text(), userDetails.getUser().getUser_picURL(), board);
+        return replyRepository.save(reply);
     }
 
     //삭제

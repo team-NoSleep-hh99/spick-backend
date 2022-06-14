@@ -10,5 +10,10 @@
         <module name="spick.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spick" target="1.8" />
+      <module name="spick.main" target="1.8" />
+      <module name="spick.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

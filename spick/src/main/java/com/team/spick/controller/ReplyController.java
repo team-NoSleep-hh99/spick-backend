@@ -1,7 +1,7 @@
 package com.team.spick.controller;
 
 import com.team.spick.domain.Reply;
-import com.team.spick.dto.ReplytDto;
+import com.team.spick.dto.ReplytRequestDto;
 import com.team.spick.security.UserDetailsImpl;
 import com.team.spick.service.ReplyService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,12 +22,13 @@ public class ReplyController {
     }
 
     // 댓글 등록
-    @PostMapping("/api/detail/{board_id}")
-    public Map<String, Object> createComment(@RequestBody ReplytDto replytDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        Reply reply = replyService.createReply(replytDto, userDetails);
+    @PostMapping("/api/detail/{board_id}/reply")
+    public Map<String, Object> createComment(@PathVariable Long board_id, @RequestBody ReplytRequestDto replytRequestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        Reply reply = replyService.createReply(board_id, replytRequestDto, userDetails);
 
         Map<String, Object> result = new HashMap<>();
         result.put("nickname", reply.getReply_nickname());
+        result.put("picURL", reply.getReply_picURL());
         result.put("comment", reply.getReply_text());
         result.put("CreatedAt", reply.getCreatedAt());
         result.put("id", reply.getReplyId());
@@ -37,11 +38,11 @@ public class ReplyController {
 
     // 댓글 수정
     @PostMapping("/api/detail/{board_id}/{replyId}")
-    public Map<String, Object> updateReply(@PathVariable Long replyId, @RequestBody ReplytDto replytDto) {
+    public Map<String, Object> updateReply(@PathVariable Long replyId, @RequestBody ReplytRequestDto replytRequestDto) {
         Map<String, Object> result = new HashMap<>();
         result.put("result", "success");
 
-        Reply reply = replyService.updateReply(replyId, replytDto);
+        Reply reply = replyService.updateReply(replyId, replytRequestDto);
         result.put("reply", reply);
         return result;
     }
