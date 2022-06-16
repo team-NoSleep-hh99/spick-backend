@@ -73,10 +73,22 @@ Steam 게임에 대한 솔직한 리뷰를 남길 수 있는 공간입니다. <b
 
 #### 5. Search
 
-<img src="https://user-images.githubusercontent.com/97326130/174118174-3a8edecd-234f-4f84-a3f3-9fbc19c57157.gif" width="600"/>
+<img src="https://user-images.githubusercontent.com/97326130/174118630-d4d44340-0f72-44dd-bf0a-5a7411fc61ca.gif" width="600"/>
 
 - 게시글 검색 페이지입니다.
 - 게시글 제목으로 게시글을 검색할 수 있습니다.
 - 검색결과 게시글을 클릭하면, 해당 게시글 페이지로 이동합니다.
 
+#### 6. About Us
 
+<img src="https://user-images.githubusercontent.com/97326130/174118911-e0755788-c922-4298-9a85-92dc9add3e78.gif" width="600"/>
+
+- 메인 페이지에서 우측 하단 버튼을 클릭하면 about us 페이지로 이동합니다.
+- 스크롤을 내리면 텍스트와 이미지가 애니메이션으로 표현됩니다.
+
+----
+
+### Repository
+- [Team repository](https://github.com/team-NoSleep-hh99)
+- [Front-end Repository](https://github.com/team-NoSleep-hh99/spick-frontend)
+- [Back-end Repository](https://github.com/team-NoSleep-hh99/spick-backend)
